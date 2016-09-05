@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/listProfile"
+            android:icon="@drawable/ic_menu_camera"
+            android:title="Profile" />
+        <item
+            android:id="@+id/listFilter"
+            android:icon="@drawable/ic_menu_gallery"
+            android:title="Filter Categories" />
+        <item
+            android:id="@+id/listFollowers"
+            android:icon="@drawable/ic_menu_slideshow"
+            android:title="Followers" />
+        <item
+            android:id="@+id/listTrendingVids"
+            android:icon="@drawable/ic_menu_manage"
+            android:title="Trending Videos" />
+        <item
+            android:id="@+id/listSettings"
+            android:icon="@drawable/ic_menu_manage"
+            android:title="Settings" />
+        <item
+            android:id="@+id/listHelp"
+            android:icon="@drawable/ic_menu_manage"
+            android:title="Help" />
+        <item
+            android:id="@+id/listAbout"
+            android:icon="@drawable/ic_menu_manage"
+            android:title="About" />
+    </group>
+
+</menu>

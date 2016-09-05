@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "933271450585",
+    "firebase_url": "https://easy-glow-8ee75.firebaseio.com",
+    "project_id": "easy-glow-8ee75",
+    "storage_bucket": "easy-glow-8ee75.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:933271450585:android:52ded7fe2299cf28",
+        "android_client_info": {
+          "package_name": "com.techone.easyglow"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "933271450585-l8aq1qbkd7fma3v8q0727fctgpuosn4u.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBdARAfpBHO1jhxqnffX01WNqL1UMjkENI"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
