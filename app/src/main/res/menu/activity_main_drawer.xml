@@ -19,6 +19,10 @@
             android:icon="@drawable/ic_menu_manage"
             android:title="Trending Videos" />
         <item
+            android:id="@+id/listBecomePartner"
+            android:icon="@drawable/ic_menu_manage"
+            android:title="Become A Partner" />
+        <item
             android:id="@+id/listSettings"
             android:icon="@drawable/ic_menu_manage"
             android:title="Settings" />

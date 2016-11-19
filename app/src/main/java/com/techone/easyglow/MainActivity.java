@@ -8,6 +8,7 @@ import android.content.IntentSender;
 import android.content.pm.PackageManager;
 import android.location.Location;
 import android.location.LocationManager;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -128,8 +129,7 @@ public class MainActivity extends AppCompatActivity
         int id = item.getItemId();
         Intent i = new Intent();
         if (id == R.id.listProfile) {
-            // Handle the camera action
-            i = new Intent("com.techone.easyglow.PROFILE");
+            i = new Intent("com.techone.easyglow.MYPROFILE");
             startActivity(i);
         } else if (id == R.id.listFilter) {
 
@@ -145,6 +145,9 @@ public class MainActivity extends AppCompatActivity
             startActivity(i);
         } else if (id == R.id.listAbout) {
             i = new Intent("com.techone.easyglow.ABOUT");
+            startActivity(i);
+        } else if (id == R.id.listBecomePartner) {
+            i = new Intent("com.techone.easyglow.BECOMEPARTNER");
             startActivity(i);
         }
 
@@ -174,41 +177,41 @@ public class MainActivity extends AppCompatActivity
 
     @Override
     public void onConnected(@Nullable Bundle bundle) {
-        if (ActivityCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
-
+        if (ContextCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+            ActivityCompat.requestPermissions(this, new String[]{android.Manifest.permission.ACCESS_COARSE_LOCATION}, 225);
         }
+        statusCheck();
         mLastLocation = LocationServices.FusedLocationApi.getLastLocation(mGoogleApiClient);
         try {
             this.googleMap.setMyLocationEnabled(true);
-        }catch (SecurityException e){
+        } catch (SecurityException e) {
             buildAlertMessageNoGps();
         }
 
-        if(mLastLocation != null){
+        if (mLastLocation != null) {
             LatLng loc = new LatLng(mLastLocation.getLatitude(), mLastLocation.getLongitude());
             googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(loc, 15f));
             database.updateLocation(firebaseAuth.getCurrentUser().getEmail(), new LocationItem(mLastLocation.getLatitude(), mLastLocation.getLongitude()));
         }
     }
 
-    public void statusCheck()
-    {
-        final LocationManager manager = (LocationManager) getSystemService( Context.LOCATION_SERVICE );
+    public void statusCheck() {
+        final LocationManager manager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
 
-        if ( !manager.isProviderEnabled( LocationManager.GPS_PROVIDER ) ) {
+        if (!manager.isProviderEnabled(LocationManager.GPS_PROVIDER)) {
             buildAlertMessageNoGps();
-
         }
 
 
     }
+
     private void buildAlertMessageNoGps() {
         final AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setMessage("Your GPS seems to be disabled, do you want to enable it?")
                 .setCancelable(false)
                 .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
-                    public void onClick(final DialogInterface dialog,  final int id) {
-                        startActivity(new Intent(android.provider.Settings.ACTION_LOCATION_SOURCE_SETTINGS));
+                    public void onClick(final DialogInterface dialog, final int id) {
+                        ActivityCompat.requestPermissions(MainActivity.this, new String[]{android.Manifest.permission.ACCESS_FINE_LOCATION}, 225);
                     }
                 })
                 .setNegativeButton("No", new DialogInterface.OnClickListener() {
